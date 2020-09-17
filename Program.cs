@@ -19,7 +19,7 @@ namespace VsLauncher
 				var solution = FindSolutionFile(args.ElementAtOrDefault(0) ?? Environment.CurrentDirectory);
 				var environment = ParseEnvironment(args.ElementAtOrDefault(1));
 
-				Process.Start(environment, solution);
+				Process.Start(environment, $"\"{solution}\"");
 			}
 			catch (Exception e)
 			{
