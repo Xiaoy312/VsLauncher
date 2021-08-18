@@ -61,9 +61,9 @@ namespace VsLauncher
 				throw new InvalidOperationException("Solution file not found in: " + _context.Path);
 			}
 
-			bool MatchSln(string x) => Path.GetExtension(x).Equals(".sln", StringComparison.OrdinalIgnoreCase);
-			bool MatchSlnf(string x) => Path.GetExtension(x).Equals(".slnf", StringComparison.OrdinalIgnoreCase) &&
-				(_context.SlnfHint?.Apply(y => Path.GetFileNameWithoutExtension(x).Contains(y, StringComparison.OrdinalIgnoreCase)) ?? true);
+			bool MatchSln(string x) => Path.GetExtension(x).Equals(".sln", StringComparison.OrdinalIgnoreCase) && MatchFilter(x);
+			bool MatchSlnf(string x) => Path.GetExtension(x).Equals(".slnf", StringComparison.OrdinalIgnoreCase) && MatchFilter(x);
+			bool MatchFilter(string x) => (_context.Filter?.Apply(y => Path.GetFileNameWithoutExtension(x).Contains(y, StringComparison.OrdinalIgnoreCase)) ?? true);
 		}
 
 		public string GetVsPath()

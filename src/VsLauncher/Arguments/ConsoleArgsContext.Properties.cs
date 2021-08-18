@@ -27,6 +27,6 @@ namespace VsLauncher.Arguments
 
 		public bool IncludeSlnf { get; set; }
 
-		public string? SlnfHint { get; set; }
+		public string? Filter { get; set; }
 	}
 }

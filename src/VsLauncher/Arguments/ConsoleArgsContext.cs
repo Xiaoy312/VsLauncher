@@ -38,7 +38,7 @@ namespace VsLauncher.Arguments
 				{ "help|h", "Display this help screen.", TrySet(_ => context.IsHelp = true) },
 				{ "verbose|v", "Use verbose log messages", TrySet(_ => context.IsVerbose = true) },
 				{ "vs=", "Specify the version of Visual Studio used to launch.", TrySet(x => context.VsVersion = x) },
-				{ "slnf:|f:", "Include .slnf in the launch options. Optionally, you can also provide a filter.", TrySet(x => { context.IncludeSlnf = true; context.SlnfHint = x; }) },
+				{ "slnf:|f:", "Include .slnf in the launch options. Optionally, you can also specify a filter for both sln or slnf.", TrySet(x => { context.IncludeSlnf = true; context.Filter = x; }) },
 			};
 
 			Action<string> TrySet(Action<string> set)
