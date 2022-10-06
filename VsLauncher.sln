@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31129.286
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8FCCDEBC-3033-48BA-9639-1CCCA1BEE633}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsLauncher.Tests", "src\VsLauncher.Tests\VsLauncher.Tests.csproj", "{444514D9-C61E-4C25-831B-D63693ACFCC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VsLauncher.Tests", "src\VsLauncher.Tests\VsLauncher.Tests.csproj", "{444514D9-C61E-4C25-831B-D63693ACFCC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsLauncher", "src\VsLauncher\VsLauncher.csproj", "{757B874C-AF5C-48F5-965C-F1ED7BF47B43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VsLauncher.App", "src\VsLauncher.App\VsLauncher.App.csproj", "{757B874C-AF5C-48F5-965C-F1ED7BF47B43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsLauncher.Core", "src\VsLauncher.Core\VsLauncher.Core.csproj", "{AC0E99BE-4112-491D-8AFD-B0D15D3DCED8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{757B874C-AF5C-48F5-965C-F1ED7BF47B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{757B874C-AF5C-48F5-965C-F1ED7BF47B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{757B874C-AF5C-48F5-965C-F1ED7BF47B43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC0E99BE-4112-491D-8AFD-B0D15D3DCED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC0E99BE-4112-491D-8AFD-B0D15D3DCED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC0E99BE-4112-491D-8AFD-B0D15D3DCED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC0E99BE-4112-491D-8AFD-B0D15D3DCED8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +36,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{444514D9-C61E-4C25-831B-D63693ACFCC6} = {8FCCDEBC-3033-48BA-9639-1CCCA1BEE633}
 		{757B874C-AF5C-48F5-965C-F1ED7BF47B43} = {8FCCDEBC-3033-48BA-9639-1CCCA1BEE633}
+		{AC0E99BE-4112-491D-8AFD-B0D15D3DCED8} = {8FCCDEBC-3033-48BA-9639-1CCCA1BEE633}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6D0C86A2-9C6E-421F-A66F-0509C81E751C}

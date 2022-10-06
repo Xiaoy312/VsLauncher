@@ -1,1 +1,1 @@
-dotnet publish src\VsLauncher
+dotnet publish src\VsLauncher.App

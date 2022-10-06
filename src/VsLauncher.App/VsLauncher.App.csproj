@@ -6,6 +6,7 @@
     <PublishSingleFile>true</PublishSingleFile>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <AssemblyName>VsLauncher</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -16,6 +17,10 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
     <PackageReference Include="Mono.Options" Version="6.6.0.161" />
     <PackageReference Include="NetEscapades.Configuration.Yaml" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VsLauncher.Core\VsLauncher.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
