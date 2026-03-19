@@ -15,11 +15,18 @@ namespace VsLauncher
 		{
 			try
 			{
-				var context = ConsoleArgsContext.Parse(args);
+				var context = ConsoleArgsContext.Parse(args, defaultPath: Environment.CurrentDirectory);
 
 				if (context.HasError)
 				{
-					Console.Error.WriteLine(context.Errors[0].Message);
+					foreach (var error in context.Errors)
+					{
+						Console.Error.WriteLine(error.Message);
+						if (error.Exception is not null)
+						{
+							Console.Error.WriteLine(error.Exception);
+						}
+					}
 					Environment.Exit(-1);
 				}
 				else if (context.IsHelp)
@@ -28,10 +35,7 @@ namespace VsLauncher
 				}
 				else
 				{
-					context.Path ??= Environment.CurrentDirectory;
-					var launcher = new Launcher(Config, context);
-
-					launcher.Launch();
+					new Launcher(Config, context).Launch();
 				}
 			}
 			catch (Exception e)

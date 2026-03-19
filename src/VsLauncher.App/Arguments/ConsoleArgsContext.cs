@@ -9,9 +9,9 @@ namespace VsLauncher.Arguments
 {
 	public partial class ConsoleArgsContext
 	{
-		public static ConsoleArgsContext Parse(string[] args)
+		public static ConsoleArgsContext Parse(string[] args, string? defaultPath = null)
 		{
-			var context = new ConsoleArgsContext();
+			var context = new ConsoleArgsContext() { Path = defaultPath ?? Environment.CurrentDirectory };
 
 			if (args.Length > 0)
 			{
@@ -41,49 +41,27 @@ namespace VsLauncher.Arguments
 				{ "slnf:|f:", "Include .slnf in the launch options. Optionally, you can also specify a filter for both sln or slnf.", TrySet(x => { context.IncludeSlnf = true; context.Filter = x; }) },
 			};
 
-			Action<string> TrySet(Action<string> set)
+			Action<string> TrySet(Action<string> set) => TryParseAndSet(x => x, set);
+			Action<string> TryParseAndSet<T>(Func<string, T> parse, Action<T> set) => value =>
 			{
-				return value =>
+				var isParsing = true;
+				try
 				{
-					if (context != null)
-					{
-						try
-						{
-							set(value);
-						}
-						catch (Exception e)
-						{
-							context.Errors.Add(new ConsoleArgError(value, ConsoleArgErrorType.ValueAssignmentError, e));
-						}
-					}
-				};
-			}
-			Action<string> TryParseAndSet<T>(Func<string, T> parse, Action<T> set)
-			{
-				return value =>
+					var parsed = parse(value);
+					isParsing = false;
+					set(parsed);
+				}
+				catch (Exception e)
 				{
-					if (context != null)
-					{
-						var isParsing = true;
-						try
-						{
-							var parsed = parse(value);
-							isParsing = false;
-							set(parsed);
-						}
-						catch (Exception e)
-						{
-							context.Errors.Add(new ConsoleArgError(
-								value,
-								isParsing ? ConsoleArgErrorType.ValueParsingError : ConsoleArgErrorType.ValueAssignmentError,
-								e
-							));
-						}
-					}
-				};
-			}
+					context.Errors.Add(new ConsoleArgError(
+						value,
+						isParsing ? ConsoleArgErrorType.ValueParsingError : ConsoleArgErrorType.ValueAssignmentError,
+						e
+					));
+				}
+			};
 		}
 
-		public void WriteOptionDescriptions(TextWriter writer) => CreateOptionsFor(new ConsoleArgsContext()).WriteOptionDescriptions(writer);
+		public void WriteOptionDescriptions(TextWriter writer) => CreateOptionsFor(null!).WriteOptionDescriptions(writer);
 	}
 }

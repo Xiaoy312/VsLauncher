@@ -21,7 +21,7 @@ namespace VsLauncher.Arguments
 
 		public bool IsVerbose { get; private set; }
 
-		public string Path { get; set; }
+		public required string Path { get; set; }
 
 		public string? VsVersion { get; set; }
 

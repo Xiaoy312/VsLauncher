@@ -6,7 +6,7 @@ namespace VsLauncher.Arguments
 {
 	public class ConsoleArgError
 	{
-		public ConsoleArgError(string argument, ConsoleArgErrorType type, Exception e = null)
+		public ConsoleArgError(string argument, ConsoleArgErrorType type, Exception? e = null)
 		{
 			Argument = argument;
 			Type = type;
@@ -17,7 +17,7 @@ namespace VsLauncher.Arguments
 
 		public string Argument { get; set; }
 
-		public Exception Exception { get; set; }
+		public Exception? Exception { get; set; }
 
 		public string Message => Type switch
 		{
